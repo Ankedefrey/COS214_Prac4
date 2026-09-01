@@ -67,3 +67,17 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Build artifacts
+*.o
+*.out
+taskforge
+build/
+
+# Editor/OS junk
+.vscode/
+.DS_Store
+*.swp
+
+# Docker
+*.log
