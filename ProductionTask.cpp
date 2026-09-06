@@ -1,8 +1,11 @@
 #include "ProductionTask.h"
+#include "PlanningState.h"
 
 ProductionTask::ProductionTask(string name, int duration, double cost) {
-	// TODO - implement ProductionTask::ProductionTask
-	throw "Not yet implemented";
+	
+	//for state
+	currentState = new PlanningState();
+
 }
 
 int ProductionTask::getDuration() {
@@ -19,16 +22,15 @@ void ProductionTask::display(int depth) {
 }
 
 void ProductionTask::advance() {
-	// TODO - implement ProductionTask::advance
-	throw "Not yet implemented";
+	currentState->advance(this);
 }
 
 string ProductionTask::getStatus() {
-	// TODO - implement ProductionTask::getStatus
-	throw "Not yet implemented";
+	return currentState->getName();
 }
 
 void ProductionTask::setState(TaskState* s) {
-	// TODO - implement ProductionTask::setState
-	throw "Not yet implemented";
+	//free old state before overwriting the ptr
+	delete currentState;
+	currentState = s;
 }
