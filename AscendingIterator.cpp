@@ -10,11 +10,17 @@ void AscendingIterator::first() {
 }
 
 void AscendingIterator::next() {
-	if(!isDone()){index++;}
+	if(!isDone()){
+		index++;
+	}
 }
 
 bool AscendingIterator::isDone() {
-	if (index >= items.size()){return true;}else{return false;}
+	if (index >= (int)items.size()){
+		return true;
+	}else{
+		return false;
+	}
 }
 
 ProductionComponent* AscendingIterator::currentItem() {

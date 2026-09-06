@@ -1,6 +1,6 @@
 #include "ProductionComponent.h"
 using namespace std;
-// abstract class 
+// abstract class
 ProductionComponent::ProductionComponent(string name) {
     this->name = name;
 }
@@ -8,10 +8,10 @@ ProductionComponent::ProductionComponent(string name) {
 ProductionComponent::~ProductionComponent() {
 }
 
-void ProductionComponent::add(ProductionComponent* c) {
+void ProductionComponent::add(ProductionComponent*) {
 }
 
-void ProductionComponent::remove(ProductionComponent* c) {
+void ProductionComponent::remove(ProductionComponent*) {
 }
 
 ProductionComponent* ProductionComponent::getChild(int i) {

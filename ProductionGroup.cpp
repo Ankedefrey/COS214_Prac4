@@ -30,7 +30,7 @@ void ProductionGroup::remove(ProductionComponent* c) {
 }
 
 ProductionComponent* ProductionGroup::getChild(int i) {
-	if (i >= 0 && i < children.size()){
+	if (i >= 0 && i < (int)children.size()){
         return children[i];
     }
     return nullptr;
@@ -38,7 +38,7 @@ ProductionComponent* ProductionGroup::getChild(int i) {
 
 int ProductionGroup::getDuration() {
 	int duration = 0;
-	for (int i=0; i<children.size(); i++){
+	for (int i=0; i<(int)children.size(); i++){
 		duration += children[i]->getDuration();
 	}
 	return duration;
@@ -46,7 +46,7 @@ int ProductionGroup::getDuration() {
 
 double ProductionGroup::getCost() {
 	double cost = 0;
-	for (int i=0; i<children.size(); i++){
+	for (int i=0; i<(int)children.size(); i++){
 		cost += children[i]->getCost();
 	}
 	return cost;
@@ -54,7 +54,7 @@ double ProductionGroup::getCost() {
 
 void ProductionGroup::display(int depth) {
 	cout << "Name: " << getName()<<" Duration: " << getDuration()<<" Cost: " << getCost() << " State: " <<getStatus()<< endl;
-    for (int i=0; i<children.size(); i++){
+    for (int i=0; i<(int)children.size(); i++){
         children[i]->display(depth + 1);
     }
 }
