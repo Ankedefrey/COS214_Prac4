@@ -3,7 +3,7 @@
 #include "ProductionTask.h"
 
 void PlanningState::advance(ProductionTask* task) {
-	task->setState(new ShootingState);
+	task->setState(new ShootingState());
 }
 
 string PlanningState::getName() {
