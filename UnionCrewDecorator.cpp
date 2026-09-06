@@ -14,6 +14,7 @@ void UnionCrewDecorator::display(int depth) {
 	for (int i = 0; i < depth; ++i) {
 		std::cout << "  ";
 	}
-	std::cout << "[Union Crew]" << std::endl;
+	std::cout << "[Union Crew] Name: " << getName() << " Duration: " << getDuration()
+	        << " Cost: " << getCost() << " State: " << getStatus() << std::endl;
 	wrapped->display(depth + 1);
 }
