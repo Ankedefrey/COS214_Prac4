@@ -1,4 +1,5 @@
 #include "ApprovalRequiredDecorator.h"
+#include "ProductionComponent.h"
 #include <iostream>
 
 ApprovalRequiredDecorator::ApprovalRequiredDecorator(ProductionComponent* c)
@@ -9,7 +10,7 @@ void ApprovalRequiredDecorator::advance() {
 		std::cout << "Blocked: approval required before this task can advance." << std::endl;
 		return;
 	}
-	component->advance();
+	wrapped->advance();
 }
 
 void ApprovalRequiredDecorator::setApproved(bool a) {

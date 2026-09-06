@@ -1,4 +1,5 @@
 #include "UnionCrewDecorator.h"
+#include "ProductionComponent.h"
 #include <iostream>
 
 UnionCrewDecorator::UnionCrewDecorator(ProductionComponent* c) : ProductionDecorator(c) {}
@@ -6,7 +7,7 @@ UnionCrewDecorator::UnionCrewDecorator(ProductionComponent* c) : ProductionDecor
 double UnionCrewDecorator::getCost() {
 	// Certified union crew adds a fixed surcharge on top of the wrapped cost.
 	const double surcharge = 500.0;
-	return component->getCost() + surcharge;
+	return wrapped->getCost() + surcharge;
 }
 
 void UnionCrewDecorator::display(int depth) {
@@ -14,5 +15,5 @@ void UnionCrewDecorator::display(int depth) {
 		std::cout << "  ";
 	}
 	std::cout << "[Union Crew]" << std::endl;
-	component->display(depth + 1);
+	wrapped->display(depth + 1);
 }
