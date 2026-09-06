@@ -1,11 +1,11 @@
 #include "PlanningState.h"
+#include "ShootingState.h"
+#include "ProductionTask.h"
 
 void PlanningState::advance(ProductionTask* task) {
-	// TODO - implement PlanningState::advance
-	throw "Not yet implemented";
+	task->setState(new ShootingState);
 }
 
 string PlanningState::getName() {
-	// TODO - implement PlanningState::getName
-	throw "Not yet implemented";
+	return "Planning";
 }
