@@ -1,13 +1,13 @@
 #include "ProductionTask.h"
-#include "PlanningState.h"
-
-ProductionTask::ProductionTask(string name, int duration, double cost) {
-	
-	//for state
-	currentState = new PlanningState();
-
+ProductionTask::ProductionTask(string name, int duration, double cost) : ProductionComponent(name){
+  this->cost = cost;
+  this->duration = duration;
+  this->currentState = new PlanningState();
 }
 
+ProductionTask::~ProductionTask(){
+  delete currentState;
+}
 int ProductionTask::getDuration() {
 	return this->duration;
 }
@@ -17,8 +17,7 @@ double ProductionTask::getCost() {
 }
 
 void ProductionTask::display(int depth) {
-	// TODO - implement ProductionTask::display
-	throw "Not yet implemented";
+	cout << "Name:" << getName() << "Duration: " << this->duration << "Cost: " << this->cost << "State: " << getStatus() << endl;
 }
 
 void ProductionTask::advance() {
