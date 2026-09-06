@@ -45,7 +45,7 @@ int ProductionGroup::getDuration() {
 }
 
 double ProductionGroup::getCost() {
-	int cost = 0;
+	double cost = 0;
 	for (int i=0; i<children.size(); i++){
 		cost += children[i]->getCost();
 	}
