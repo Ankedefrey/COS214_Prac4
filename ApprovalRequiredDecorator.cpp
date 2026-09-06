@@ -1,13 +1,15 @@
 #include "ApprovalRequiredDecorator.h"
+#include <iostream>
 
-ApprovalRequiredDecorator::ApprovalRequiredDecorator(ProductionComponent* c) {
-	// TODO - implement ApprovalRequiredDecorator::ApprovalRequiredDecorator
-	throw "Not yet implemented";
-}
+ApprovalRequiredDecorator::ApprovalRequiredDecorator(ProductionComponent* c)
+	: ProductionDecorator(c), approved(false) {}
 
 void ApprovalRequiredDecorator::advance() {
-	// TODO - implement ApprovalRequiredDecorator::advance
-	throw "Not yet implemented";
+	if (!approved) {
+		std::cout << "Blocked: approval required before this task can advance." << std::endl;
+		return;
+	}
+	component->advance();
 }
 
 void ApprovalRequiredDecorator::setApproved(bool a) {
