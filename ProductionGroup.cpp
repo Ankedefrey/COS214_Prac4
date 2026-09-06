@@ -10,7 +10,7 @@ ProductionGroup::ProductionGroup(string name):ProductionComponent(name){
 }
 
 ProductionGroup::~ProductionGroup() {
-	for (int i = 0; i < children.size(); i++){
+	for (int i = 0; i < (int)children.size(); i++){
         delete children[i];
     }
     children.clear();
@@ -21,7 +21,7 @@ void ProductionGroup::add(ProductionComponent* c) {
 }
 
 void ProductionGroup::remove(ProductionComponent* c) {
-	for (int i = 0; i < children.size(); i++){
+	for (int i = 0; i < (int)children.size(); i++){
         if (children[i] == c){
             children.erase(children.begin() + i);
             return;
