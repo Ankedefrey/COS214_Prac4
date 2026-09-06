@@ -66,7 +66,7 @@ int main(){
     //two independant traversals + snapshot policy
     cout<<"==Two independant traversals over Production=="<<endl;
     ProductionIterator* ascIt = shooting->createIterator("ascending");
-    ProductionIterator* decIt = shooting->createIterator("descending");
+    ProductionIterator* descIt = shooting->createIterator("descending");
     ascIt->first();
     descIt->first();
 
