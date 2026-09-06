@@ -1,11 +1,12 @@
 #include "CompletedState.h"
+#include "ProductionTask.h"
+
+#include <iostream>
 
 void CompletedState::advance(ProductionTask* task) {
-	// TODO - implement CompletedState::advance
-	throw "Not yet implemented";
+	std::cout<<task->getName()<<" is already completed."<<std::endl;
 }
 
 string CompletedState::getName() {
-	// TODO - implement CompletedState::getName
-	throw "Not yet implemented";
+	return "Completed";
 }

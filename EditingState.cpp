@@ -1,11 +1,11 @@
 #include "EditingState.h"
+#include "CompletedState.h"
+#include "ProductionTask.h"
 
 void EditingState::advance(ProductionTask* task) {
-	// TODO - implement EditingState::advance
-	throw "Not yet implemented";
+	task->setState(new CompletedState());
 }
 
 string EditingState::getName() {
-	// TODO - implement EditingState::getName
-	throw "Not yet implemented";
+	return "Editing";
 }

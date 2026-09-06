@@ -1,15 +1,12 @@
 #include "ProductionTask.h"
-#include <string>
-#include <iostream>
-using namespace std;
-
-ProductionTask::ProductionTask(string name, int duration, double cost):ProductionComponent(name) {
-	this->cost = cost;
-	this->duration =duration;
-	this->currentState = nullptr;
+ProductionTask::ProductionTask(string name, int duration, double cost) : ProductionComponent(name){
+  this->cost = cost;
+  this->duration = duration;
+  this->currentState = new PlanningState();
 }
+
 ProductionTask::~ProductionTask(){
-	delete currentState;
+  delete currentState;
 }
 int ProductionTask::getDuration() {
 	return this->duration;
@@ -24,16 +21,15 @@ void ProductionTask::display(int depth) {
 }
 
 void ProductionTask::advance() {
-	// TODO - implement ProductionTask::advance
-	throw "Not yet implemented";
+	currentState->advance(this);
 }
 
 string ProductionTask::getStatus() {
-	// TODO - implement ProductionTask::getStatus
-	throw "Not yet implemented";
+	return currentState->getName();
 }
 
 void ProductionTask::setState(TaskState* s) {
-	// TODO - implement ProductionTask::setState
-	throw "Not yet implemented";
+	//free old state before overwriting the ptr
+	delete currentState;
+	currentState = s;
 }
