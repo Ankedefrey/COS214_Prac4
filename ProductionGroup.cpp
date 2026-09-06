@@ -71,10 +71,10 @@ string ProductionGroup::getStatus() {
 
 ProductionIterator* ProductionGroup::createIterator(string order) {
 	if (order == "ascending"){
-        return new AscendingIterator(children);
+        return new AscendingIterator(children);//just wait on these error im working on it
     }
     if (order == "descending"){
-        return new DescendingIterator(children);
+        return new DescendingIterator(children);//just wait on these error im working on it
     }
     return nullptr;
 }
