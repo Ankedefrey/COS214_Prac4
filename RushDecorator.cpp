@@ -1,21 +1,25 @@
 #include "RushDecorator.h"
+#include <iostream>
+
+RushDecorator::RushDecorator(ProductionComponent* c) : ProductionDecorator(c) {}
 
 int RushDecorator::getDuration() {
-	// TODO - implement RushDecorator::getDuration
-	throw "Not yet implemented";
+	// Rushing cuts the schedule -- e.g. compress the wrapped duration by 30%.
+	int base = component->getDuration();
+	int rushed = (base * 7) / 10;
+	return rushed < 1 ? 1 : rushed;
 }
 
 double RushDecorator::getCost() {
-	// TODO - implement RushDecorator::getCost
-	throw "Not yet implemented";
+	// Overtime/expediting surcharge on top of the wrapped cost.
+	const double surcharge = 250.0;
+	return component->getCost() + surcharge;
 }
 
 void RushDecorator::display(int depth) {
-	// TODO - implement RushDecorator::display
-	throw "Not yet implemented";
-}
-
-RushDecorator::RushDecorator(ProductionComponent* c) {
-	// TODO - implement RushDecorator::RushDecorator
-	throw "Not yet implemented";
+	for (int i = 0; i < depth; ++i) {
+		std::cout << "  ";
+	}
+	std::cout << "[Rush]" << std::endl;
+	component->display(depth + 1);
 }
