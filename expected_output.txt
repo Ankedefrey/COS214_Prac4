@@ -1,0 +1,16 @@
+=== TaskForge: A day on set ===
+
+==Advancing the script through its lifecycle==
+Write Script is already completed; advance() has no effect.
+
+==A rush order comes in on Scene 12==
+Blocked: approval required before this task can advance.
+
+==Two independent traversals over Production==
+Ascending (snapshotted before the add):
+  Shoot Scene 12
+Descending (snapshotted before the add):
+  Shoot Scene 12
+Fresh iterator, created after the add:
+  Shoot Scene 12
+  Reshoot Scene 3

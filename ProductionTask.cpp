@@ -22,7 +22,10 @@ double ProductionTask::getCost() {
 }
 
 void ProductionTask::display(int depth) {
-	cout << "Name:" << getName() << "Duration: " << this->duration << "Cost: " << this->cost << "State: " << getStatus() << endl;
+	for (int i = 0; i < depth; i++) {
+		cout << "  ";
+	}
+	cout << "Name: " << getName() << " Duration: " << getDuration() << " Cost: " << getCost() << " State: " << getStatus() << endl;
 }
 
 void ProductionTask::advance() {
