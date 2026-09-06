@@ -1,26 +1,27 @@
 #include "DescendingIterator.h"
 
+DescendingIterator::DescendingIterator(vector<ProductionComponent*> children){
+    items = children;
+    index = items.size() - 1;
+}
 void DescendingIterator::first() {
-	// TODO - implement DescendingIterator::first
-	throw "Not yet implemented";
+	 index = items.size() - 1;
 }
 
 void DescendingIterator::next() {
-	// TODO - implement DescendingIterator::next
-	throw "Not yet implemented";
+	if (!isDone()){
+        index--;
+    }
 }
 
 bool DescendingIterator::isDone() {
-	// TODO - implement DescendingIterator::isDone
-	throw "Not yet implemented";
+	return index < 0;
 }
 
 ProductionComponent* DescendingIterator::currentItem() {
-	// TODO - implement DescendingIterator::currentItem
-	throw "Not yet implemented";
+	if (!isDone()){
+        return items[index];
+    }
+    return nullptr;
 }
 
-DescendingIterator::DescendingIterator(vector<ProductionComponent*> children) {
-	// TODO - implement DescendingIterator::DescendingIterator
-	throw "Not yet implemented";
-}
