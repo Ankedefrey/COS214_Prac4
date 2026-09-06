@@ -1,12 +1,17 @@
 #include "ProductionTask.h"
+#include "PlanningState.h"
+#include <string>
+#include <iostream>
+
+
 ProductionTask::ProductionTask(string name, int duration, double cost) : ProductionComponent(name){
-  this->cost = cost;
-  this->duration = duration;
-  this->currentState = new PlanningState();
+	this->cost = cost;
+	this->duration = duration;
+	this->currentState = new PlanningState();
 }
 
 ProductionTask::~ProductionTask(){
-  delete currentState;
+    delete currentState;
 }
 int ProductionTask::getDuration() {
 	return this->duration;
