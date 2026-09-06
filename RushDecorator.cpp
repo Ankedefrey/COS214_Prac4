@@ -21,6 +21,7 @@ void RushDecorator::display(int depth) {
 	for (int i = 0; i < depth; ++i) {
 		std::cout << "  ";
 	}
-	std::cout << "[Rush]" << std::endl;
+	std::cout << "[Rush] Name: " << getName() << " Duration: " << getDuration()
+	        << " Cost: " << getCost() << " State: " << getStatus() << std::endl;
 	wrapped->display(depth + 1);
 }

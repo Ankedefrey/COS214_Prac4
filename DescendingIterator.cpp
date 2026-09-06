@@ -5,7 +5,7 @@ DescendingIterator::DescendingIterator(vector<ProductionComponent*> children){
     index = items.size() - 1;
 }
 void DescendingIterator::first() {
-	 index = items.size() - 1;
+	index = items.size() - 1;
 }
 
 void DescendingIterator::next() {

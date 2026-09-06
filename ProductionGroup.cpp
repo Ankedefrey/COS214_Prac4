@@ -45,7 +45,7 @@ int ProductionGroup::getDuration() {
 }
 
 double ProductionGroup::getCost() {
-	int cost = 0;
+	double cost = 0;
 	for (int i=0; i<children.size(); i++){
 		cost += children[i]->getCost();
 	}
@@ -60,13 +60,34 @@ void ProductionGroup::display(int depth) {
 }
 
 void ProductionGroup::advance() {
-	// TODO - implement ProductionGroup::advance
-	throw "Not yet implemented";
 }
 
 string ProductionGroup::getStatus() {
-	// TODO - implement ProductionGroup::getStatus
-	throw "Not yet implemented";
+	int completed = 0;
+    int total = 0;
+
+    for(int i = 0; i < (int)children.size(); i++){
+        string childStatus = children[i]->getStatus();
+        size_t slashPos = childStatus.find('/');
+
+        if(slashPos != string::npos){
+            int childCompleted = stoi(childStatus.substr(0, slashPos));
+
+            size_t spacePos = childStatus.find(' ', slashPos);
+
+			int childTotal = stoi(childStatus.substr(slashPos + 1, spacePos - slashPos - 1));
+
+			completed += childCompleted;
+			total += childTotal;
+        }else{
+            //child is a leaf task, status = state name
+            total += 1;
+            if(childStatus == "Completed"){
+                completed += 1;
+            }
+        }
+    }
+    return to_string(completed) + "/" + to_string(total) + " tasks completed";
 }
 
 ProductionIterator* ProductionGroup::createIterator(string order) {
