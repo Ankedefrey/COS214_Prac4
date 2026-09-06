@@ -14,7 +14,7 @@ void ProductionComponent::add(ProductionComponent*) {
 void ProductionComponent::remove(ProductionComponent*) {
 }
 
-ProductionComponent* ProductionComponent::getChild(int i) {
+ProductionComponent* ProductionComponent::getChild(int) {
     return nullptr;
 }
 
