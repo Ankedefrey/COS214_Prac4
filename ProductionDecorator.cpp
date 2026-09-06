@@ -1,31 +1,28 @@
 #include "ProductionDecorator.h"
 
-ProductionDecorator::ProductionDecorator(ProductionComponent* c) {
-	// TODO - implement ProductionDecorator::ProductionDecorator
-	throw "Not yet implemented";
+ProductionDecorator::ProductionDecorator(ProductionComponent* c)
+	: ProductionComponent(c->getName()), wrapped(c) {}
+
+ProductionDecorator::~ProductionDecorator() {
+	delete wrapped;
 }
 
 int ProductionDecorator::getDuration() {
-	// TODO - implement ProductionDecorator::getDuration
-	throw "Not yet implemented";
+	return wrapped->getDuration();
 }
 
 double ProductionDecorator::getCost() {
-	// TODO - implement ProductionDecorator::getCost
-	throw "Not yet implemented";
+	return wrapped->getCost();
 }
 
 void ProductionDecorator::display(int depth) {
-	// TODO - implement ProductionDecorator::display
-	throw "Not yet implemented";
+	wrapped->display(depth);
 }
 
 void ProductionDecorator::advance() {
-	// TODO - implement ProductionDecorator::advance
-	throw "Not yet implemented";
+	wrapped->advance();
 }
 
 string ProductionDecorator::getStatus() {
-	// TODO - implement ProductionDecorator::getStatus
-	throw "Not yet implemented";
+	return wrapped->getStatus();
 }
