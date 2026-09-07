@@ -12,7 +12,7 @@ using namespace std;
 
 int main(){
 
-    cout << "==TaskForge: A day on set==\n"<<endl;
+    cout << "==TaskForge: A day on set of 12 Angry Dining Philosophers==\n"<<endl;
 
     // BUILDING THE HIERARCHY (COMPOSITE)
     // movie->preProd->scriptDev->script is 3 levels of nesting below main
@@ -39,13 +39,20 @@ int main(){
     movie->add(shooting);
     movie->add(post);
 
+    cout<<"Morning call sheet (full hierarchy): "<<endl;
+    movie->display(0);
+    cout<<endl;
+
     // Lifecycle (state diagram)
-    cout<<"==Advancing the script through its lifecycle=="<<endl;
+    cout<<"==Scenario 1: Script development & a rush order on Scene 12=="<<endl;
+    cout<<"Script status: "<<script->getStatus()<<endl;
 
     script->advance();//planning -> shooting
     script->advance();//shooting -> editing
     script->advance();//editing -> completed
-    script->advance();//completed -> completed
+
+    cout<<"Script is now: "<<script->getStatus()<<endl;
+
     cout<<endl;
 
     //DECORATOR - stacked (Decorator + state together)
