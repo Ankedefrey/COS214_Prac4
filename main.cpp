@@ -55,19 +55,25 @@ int main(){
 
     cout<<endl;
 
-    //DECORATOR - stacked (Decorator + state together)
-    cout<< "==A rush order comes in on Scene 12=="<<endl;
-    ProductionComponent* rushed = new RushDecorator(scene12);
-    rushed = new UnionCrewDecorator(rushed);
-    ApprovalRequiredDecorator* gatedScene = new ApprovalRequiredDecorator(rushed);
+    //Last-minute change: scene 12 becomes rushe + union + approval required
+    cout << "\n==Producer: \"Scene 12 is now a rush job with union crew. Needs approval.\"==\n";
+    ProductionComponent* decorated = new RushDecorator(scene12);
+    decorated = new UnionCrewDecorator(decorated);
+    ApprovalRequiredDecorator* gated = new ApprovalRequiredDecorator(decorated);
 
-    gatedScene->advance(); //Expect blocked output string
-    gatedScene->setApproved(true);
-    gatedScene->advance(); //expect advancement
+    //decorated object participates in normal system behaviour
+    cout<<"Decorated Scene 12 cost: R"<<gated->getCost()<<endl;
+    cout<<"Trying to advance before approval...\n"<<endl;
+    gated->advance(); //Expect blocked output string
+    gated->setApproved(true);
+    cout<<"Approval granted. Advancing...\n";
+    gated->advance(); //expect advancement - now allowed
 
-    //runtime decoration/structural change
+    //structural change: replace the original task with the decorated version
     shooting->remove(scene12);
-    shooting->add(gatedScene);
+    shooting->add(gated);
+    cout<<"\nUpdated Production unit after the change:\n";
+    shooting->display(0);
     cout<<endl;
     
     //two independant traversals + snapshot policy
