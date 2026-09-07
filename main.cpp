@@ -75,39 +75,39 @@ int main(){
     cout<<"\nUpdated Production unit after the change:\n";
     shooting->display(0);
     cout<<endl;
+
+    cout << "==Scenario 2: Walking the Production unit while a reshoot is added==\n";
     
     //two independant traversals + snapshot policy
-    cout<<"==Two independant traversals over Production=="<<endl;
     ProductionIterator* ascIt = shooting->createIterator("ascending");
     ProductionIterator* descIt = shooting->createIterator("descending");
-    ascIt->first();
-    descIt->first();
 
     //Runtime structural change while both iterators are already open
     ProductionTask* reshoot = new ProductionTask("Reshoot Scene 3", 2, 8000);
     shooting->add(reshoot);
+    cout << "Last-minute addition: \"Reshoot Scene 3\" has been added to the call sheet.\n\n";
 
-    cout<<"Ascending (before the add): "<<endl;
-    for(; !ascIt->isDone(); ascIt->next()){
-        cout<<"  "<<ascIt->currentItem()->getName()<<endl;
+    cout<<"Ascending iterator (before the add - snapshot): "<<endl;
+    for(ascIt->first(); !ascIt->isDone(); ascIt->next()){
+        cout<<" -> "<<ascIt->currentItem()->getName()<<endl;
     } //should NOT include "Reshoot Scene 3"
 
-    cout<<"Descending (before the add): "<<endl;
-    for(; !descIt->isDone(); descIt->next()){
-        cout<<"  "<<descIt->currentItem()->getName()<<endl;
+    cout<<"Descending iterator (before the add - snapshot): "<<endl;
+    for(descIt->first(); !descIt->isDone(); descIt->next()){
+        cout<<" -> "<<descIt->currentItem()->getName()<<endl;
     } //should NOT include "Reshoot Scene 3"
 
+	cout << "\nFresh acsending iterator (created after the add):" << endl;
     ProductionIterator* freshIt = shooting->createIterator("ascending");
-	cout << "Fresh iterator, created after the add:" << endl;
 	for (freshIt->first(); !freshIt->isDone(); freshIt->next()) {
-		cout << "  " << freshIt->currentItem()->getName() << endl;
+		cout << " -> " << freshIt->currentItem()->getName() << endl;
 	} //should include "Reshoot Scene 3"
 
     delete ascIt;
     delete descIt;
     delete freshIt;
 
-    cout<<"==Final structure=="<<endl;
+    cout<<"==End of the day call sheet=="<<endl;
     movie->display(0);
 
     delete movie;
