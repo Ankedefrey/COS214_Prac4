@@ -2,8 +2,8 @@
 
 ## Team
 - Anke de Frey - u24611400
-- Rynhardt - u
-- Terrence - u
+- Rynhardt Gouws- u
+- Terrence Hluyo- u25446968
 
 ## Build & Run (Docker)
 Build the image
@@ -42,6 +42,3 @@ From the same container shell, after 'make':
 - Source files (.cpp/.h) and main.cpp - project root
 - Makefile, Dockerfie - project root
 - docs/ - class diagram, object diagram, state diagram, and 3 activity diagrams
-
-## Domain
-(add after Task1 design)

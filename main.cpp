@@ -50,6 +50,7 @@ int main(){
     script->advance();//planning -> shooting
     script->advance();//shooting -> editing
     script->advance();//editing -> completed
+    script->advance();//completed -> completed (invalid transition)
 
     cout<<"Script is now: "<<script->getStatus()<<endl;
 
