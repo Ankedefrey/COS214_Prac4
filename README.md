@@ -2,7 +2,7 @@
 
 ## Team
 - Anke de Frey - u24611400
-- Rynhardt Gouws- u25446968
+- Rynhardt Gouws- u25189922
 - Terrence Hluyo- u25446968
 
 ## Build & Run (Docker)
